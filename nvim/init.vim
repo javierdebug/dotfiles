@@ -24,42 +24,43 @@ if &term == "screen" || &term == "xterm"
 endif
 "syntax on
 set noswapfile
+set path=$PWD/**
 
 
 call plug#begin('~/local/share/nvim/plugged')
 " Use release branch (recommend)
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'https://github.com/ctrlpvim/ctrlp.vim'
-    " Plug 'https://github.com/preservim/nerdtree'
-    Plug 'https://github.com/tpope/vim-commentary'
-    " Plug 'christoomey/vim-system-copy'
-    Plug 'dracula/vim', { 'as': 'dracula' }
-    Plug 'EdenEast/nightfox.nvim'
-    Plug 'vim-airline/vim-airline'
-    Plug 'prettier/vim-prettier', {
-      \'do': 'npm install -g prettier',
-      \ 'for': [
-        \ 'javascript',
-        \ 'typescript',
-        \ 'css',
-        \ 'less',
-        \ 'scss',
-        \ 'json',
-        \ 'graphql',
-        \ 'markdown',
-        \ 'vue',
-        \ 'lua',
-        \ 'php',
-        \ 'python',
-        \ 'html',
-        \ 'swift' ] }
-    Plug 'jiangmiao/auto-pairs'
-    Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'Yggdroot/indentLine'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-    Plug 'airblade/vim-rooter'
+     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+     Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+     " Plug 'https://github.com/preservim/nerdtree'
+     Plug 'https://github.com/tpope/vim-commentary'
+     " Plug 'christoomey/vim-system-copy'
+     Plug 'dracula/vim', { 'as': 'dracula' }
+     Plug 'EdenEast/nightfox.nvim'
+     Plug 'vim-airline/vim-airline'
+     Plug 'prettier/vim-prettier', {
+       \'do': 'npm install -g prettier',
+       \ 'for': [
+         \ 'javascript',
+         \ 'typescript',
+         \ 'css',
+         \ 'less',
+         \ 'scss',
+         \ 'json',
+         \ 'graphql',
+         \ 'markdown',
+         \ 'vue',
+         \ 'lua',
+         \ 'php',
+         \ 'python',
+         \ 'html',
+         \ 'swift' ] }
+     Plug 'jiangmiao/auto-pairs'
+     Plug 'tpope/vim-fugitive'
+     Plug 'airblade/vim-gitgutter'
+     Plug 'Yggdroot/indentLine'
+     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+     Plug 'junegunn/fzf.vim'
+     Plug 'airblade/vim-rooter'
 call plug#end()
 
 
@@ -89,9 +90,13 @@ let g:ctrlp_working_path_mode = ""
 " run current file (see JS output in console):
 nnoremap <Leader>x :w<CR> :!node %<CR>
 
+" save file, convert ts to js and (coming) node run output:
+nnoremap <Leader>r :w<CR> :!npx ts-node -T %<CR>
+nnoremap <Leader>l :w<CR> :!npx ts-node %<CR>
+
 "Prettier Setup :
 " nnoremap <Leader>py :Prettier<CR>
-nmap <Leader>y <Plug>(Prettier)
+" nmap <Leader>y <Plug>(Prettier)
 " let g:prettier#autoformat = 1
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
 
@@ -116,5 +121,17 @@ nnoremap <Leader>M <Esc>:Lex<cr>:vertical resize 30<cr>
 vnoremap < <gv
 vnoremap > >gv
 
+"Write console.log(:
+" nnoremap <C-j> :m .+1<CR>==
+" nnoremap <C-k> :m .-2<CR>==
+inoremap clg console.log(
+
+"TPope commentary:
+" autocmd *.scss apache setlocal commentstring=/*
+
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/fzf.vim
+
+" lua << EOF
+" require'lspconfig'.theme_check.setup{}
+" EOF
