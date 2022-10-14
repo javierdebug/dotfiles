@@ -61,6 +61,8 @@ call plug#begin('~/local/share/nvim/plugged')
      Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
      Plug 'junegunn/fzf.vim'
      Plug 'airblade/vim-rooter'
+     Plug 'nvim-lua/plenary.nvim'
+     Plug 'ThePrimeagen/harpoon'
 call plug#end()
 
 
@@ -109,10 +111,40 @@ let g:prettier#exec_cmd_path = "~/path/to/cli/prettier"
 " let g:prettier#quickfix_enabled = 0
 " autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
 
+"Harpoon configuration:
+" lua << EOF
+" :lua require('harpoon')
+" require("harpoon").setup({})
+" EOF
+
+" require("harpoon").setup({
+"   global_settings = {
+"   -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
+"   save_on_toggle = false,
+
+"   -- saves the harpoon file upon every change. disabling is unrecommended.
+"   save_on_change = true,
+
+"   -- sets harpoon to run the command immediately as it's passed to the terminal when calling `sendCommand`.
+"   enter_on_sendcmd = false,
+
+"   -- closes any tmux windows harpoon that harpoon creates when you close Neovim.
+"   tmux_autoclose_windows = false,
+
+"   -- filetypes that you want to prevent from adding to the harpoon list menu.
+  " excluded_filetypes = { "harpoon" },
+
+"   -- set marks specific to each git branch inside git repository
+"   mark_branch = false,
+"   }
+" })
+
 " remaps:
+" Copy and paste:
 nnoremap <Leader>y "+y
 vnoremap <Leader>y "+y
 nmap <Leader>Y "+yy
+xnoremap <leader>p "_dP
 
 " inoremap <Leader>b <Esc>:Lex<cr>:vertical resize 30<cr>
 nnoremap <Leader>M <Esc>:Lex<cr>:vertical resize 30<cr>
@@ -125,6 +157,16 @@ vnoremap > >gv
 " nnoremap <C-j> :m .+1<CR>==
 " nnoremap <C-k> :m .-2<CR>==
 inoremap clg console.log(
+
+"Harpoon keymaps:
+nnoremap <Leader>' <Esc>:lua require("harpoon.mark").add_file()<CR>
+nnoremap <C-e> :lua require("harpoon.ui").toggle_quick_menu()<CR>
+
+nnoremap <C-h> :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <C-t> :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <C-n> :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <C-s> :lua require("harpoon.ui").nav_file(4)<CR>
+
 
 "TPope commentary:
 " autocmd *.scss apache setlocal commentstring=/*
