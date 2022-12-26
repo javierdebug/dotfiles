@@ -35,7 +35,7 @@ xkb_symbols "swa" {
    //key <AD05> { [ BackSpace] };
    key <AD06> { [ asterisk] };
    key <AD07> { [ Home ] };
-   key <AD08> { [ Up ] };
+   key <AD08> { [ 0xff52 ] };
    key <AD09> { [ End ] };
    key <AD10> { [ Prior ] };
    key <AD11> { [ ] };
@@ -60,11 +60,13 @@ xkb_symbols "swa" {
    key <AB01> { [ Return ] };
    key <AB02> { [ bar ] };
    key <AB03> { [ dollar ] };
-   key <AB04> { [ backslash ] };
-   //key <AB05> { [ Delete] };
-   key <AB06> { [ asciicircum ] };
+   key <AB04> { [ percent ] };
+   //key <AB04> { [ backslash ] };
+   key <AB05> { [ asciicircum ] };
+   key <AB06> { [ asterisk ] };
    key <AB07> { [ exclam, exclamdown ] };
    key <AB08> { [ at ] };
+   //key <AB09> { [ numbersign ] };
    key <AB09> { [ numbersign ] };
    key <AB10> { [ slash ] };
 
