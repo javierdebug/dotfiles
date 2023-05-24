@@ -33,7 +33,7 @@ xkb_symbols "swa" {
    key <AD03> { [ BackSpace ] };
    key <AD04> { [ Delete] };
    //key <AD05> { [ BackSpace] };
-   key <AD06> { [ asterisk] };
+   key <AD06> { [ BackSpace ] };
    key <AD07> { [ Home ] };
    key <AD08> { [ 0xff52 ] };
    key <AD09> { [ End ] };
@@ -43,10 +43,10 @@ xkb_symbols "swa" {
 
    key <AC01> { [ grave, asciitilde ] };
    key <AC02> { [ Escape] };
-   key <AC03> { [ Escape] };
-   key <AC04> { [ Return] };
+   key <AC03> { [ Control_L, Control_L] };
+   key <AC04> { [ Shift_L] };
    key <AC05> { [ Escape] };
-   key <AC06> { [ plus] };
+   key <AC06> { [ BackSpace ] };
    key <AC07> { [ Left ] };
    key <AC08> { [ Down ] };
    key <AC09> { [ Right ] };
