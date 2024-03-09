@@ -87,13 +87,13 @@ xkb_symbols "intl" {
     include "us(basic)"
     name[Group1]= "English (US, intl., with dead keys)";
 
-    key <TLDE> { [dead_grave, dead_tilde,         grave,       asciitilde ] };
+    key <TLDE> { [ grave, asciitilde,    dead_grave,       dead_tilde ] };
     key <AE01> { [	   1,     exclam,    exclamdown,      onesuperior ] };
     key <AE02> { [	   2,         at,   twosuperior, dead_doubleacute ] };
     key <AE03> { [	   3, numbersign, threesuperior,      dead_macron ] };
     key <AE04> { [	   4,     dollar,      currency,         sterling ] };
     key <AE05> { [	   5,    percent,      EuroSign,     dead_cedilla ] };
-    key <AE06> { [    6, dead_circumflex,    onequarter,      asciicircum ] };
+    key <AE06> { [     6, asciicircum, dead_circumflex,    onequarter  ] };
     key <AE07> { [	   7,  ampersand,       onehalf,	dead_horn ] };
     key <AE08> { [	   8,   asterisk, threequarters,      dead_ogonek ] };
     key <AE09> { [	   9,  parenleft, leftsinglequotemark, dead_breve ] };
@@ -125,7 +125,7 @@ xkb_symbols "intl" {
 
     key <AC09> { [	   l,          L,        oslash,         Ooblique ] };
     key <AC10> { [ semicolon,      colon,     paragraph,           degree ] };
-    key <AC11> { [dead_acute, dead_diaeresis, apostrophe,        quotedbl ] };
+    key <AC11> { [ apostrophe,     quotedbl, dead_acute, dead_diaeresis ] };
 
     key <AB01> { [	   z,          Z,            ae,               AE ] };
     key <AB02> { [	   x,          X,             x,                X ] };
@@ -287,8 +287,8 @@ xkb_symbols "dvorak-intl" {
     key <AE11> { [ bracketleft,  braceleft,  guillemotleft, leftdoublequotemark ] };
     key <AE12> { [bracketright, braceright, F12, guillemotright ] };
 
-    key <AD01> { [ apostrophe,quotedbl,Home,   dead_diaeresis  ] };
-    key <AD02> { [     comma,       less,      ccedilla,         Ccedilla ] };
+    key <AD01> { [ apostrophe,  quotedbl,    Escape,   dead_diaeresis  ] };
+    key <AD02> { [     comma,       less,  ccedilla,         Ccedilla ] };
     key <AD03> { [    period,    greater, parenleft,       dead_caron, bracketleft ] };
     key <AD04> { [	   p,          P,    parenright,       Odiaeresis, bracketright ] };
     key <AD05> { [	   y,          Y,    udiaeresis,       Udiaeresis, BackSpace ] };
