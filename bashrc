@@ -1,6 +1,13 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+# SCRIPTS configuration:
+PATH="$PATH":"$HOME/.local/scripts/"
+
+# bindkey -s ^f "tmux-sessionizer\n"
+bind "^f":"tmux-sessionizer\n"
+# bind -x '".pgc":"gnome-terminal"' 
+# "rofi -show window" &"'
 
 # If not running interactively, don't do anything
 case $- in
@@ -132,3 +139,55 @@ function set-title(){
   TITLE="\[\e]2;$*\a\]"
   PS1="${ORIG}${TITLE}"
 }
+
+#fzf config:
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
+# export FZF_TMUX=1
+
+# fzf ctrl-r and alt-c behavior
+export FZF_DEFAULT_COMMAND="find . -type f"
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND – type d"
+# export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
+
+# usage: fzf-tmux [LAYOUT OPTIONS] [--] [FZF OPTIONS]
+
+# See available options
+# fzf-tmux --help
+
+# # select git branches in horizontal split below (15 lines)
+# git branch | fzf-tmux -d 15
+
+# # select multiple words in vertical split on the left (20% of screen width)
+# cat /usr/share/dict/words | fzf-tmux -l 20% --multi --reverse
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Git branch in prompt.
+# parse_git_branch() {
+#     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+# }
+# export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+# on
+force_color_prompt=yes
+color_prompt=yes
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+if [ "$color_prompt" = yes ]; then
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\$ '
+else
+PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
+fi
+unset color_prompt force_color_prompt
+
+
+
+
