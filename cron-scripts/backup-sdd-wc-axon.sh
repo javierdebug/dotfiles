@@ -1,0 +1,1 @@
+rsync -avh --delete --exclude 'node_modules/*' /home/javierd/Documents/JV/Code/WonderCraft/Projects/Axon/green-field/axon-marketing-wondercraft-green-field /media/javierd/JV/ && curl -d "backup WC Axon folder to JV finished..." ntfy.sh/jv || curl -d "Error: backup not completed" ntfy.sh/jv 

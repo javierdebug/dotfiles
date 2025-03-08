@@ -1,0 +1,5 @@
+Run following command to make it executable:
+1- Add new .sh file with the command to be run
+2- chmod u+x "name-of-the-file"
+2a- Or, sh name of file.sh in the terminal to execute the script
+
