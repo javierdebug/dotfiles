@@ -98,7 +98,7 @@ fi
 
 # Extract tmux.tar into $HOME (creates ~/.tmux)
 echo "📦 Extracting tmux.tar"
-tar -xf "$HOME/dotfiles/tmux/tmux.tar" -C "$HOME"
+tar -xf "$HOME/dotfiles/tmux/.tmux.tar" -C "$HOME"
 
 # Copy tmux session files (if used manually)
 echo "📁 Copying tmux session files"
