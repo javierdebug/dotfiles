@@ -125,7 +125,7 @@ fi
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 
 # setTitle() {
 #   # echo -e "\nne]2;$@\a"
