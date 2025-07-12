@@ -33,3 +33,11 @@ echo "📥 Cloning your LazyVim fork..."
 git clone "$KICKSTART_REPO" "$NVIM_CONFIG_DIR"
 
 echo "🎉 Done! Launch Neovim to finish plugin setup: nvim"
+
+#Link .bashrc from dotfiles
+echo "🔗 Linking custom .bashrc"
+if [ -f "$HOME/.bashrc" ]; then
+  echo "Backing up existing ~/.bashrc to ~/.bashrc.bak"
+  mv "$HOME/.bashrc" "$HOME/.bashrc.bak"
+fi
+ln -sf "$HOME/dotfiles/bash/.bashrc" "$HOME/.bashrc"
