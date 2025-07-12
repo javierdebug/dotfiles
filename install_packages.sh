@@ -57,8 +57,6 @@ if [ -f "$HOME/.fzf.bash" ]; then
   mv "$HOME/.fzf.bash" "$HOME/.fzf.bash.backup"
 fi
 
-cp "$HOME/dotfiles/fzf/.fzf.bash" "$HOME/.fzf.bash"
-
 # Copy .fzf folder
 echo "📁 Copying .fzf folder to home directory"
 if [ -d "$HOME/.fzf.backup" ]; then
@@ -87,6 +85,22 @@ if [ -f "$HOME/.tmux.conf" ]; then
 fi
 
 cp "$HOME/dotfiles/tmux/.tmux.conf" "$HOME/.tmux.conf"
+
+# Remove previous backup if it exists
+if [ -d "$HOME/.tmux.backup" ]; then
+  echo "⚠️  Removing previous ~/.tmux.backup"
+  rm -rf "$HOME/.tmux.backup"
+fi
+
+# Backup current .tmux if it exists
+if [ -d "$HOME/.tmux" ]; then
+  echo "🛑 Backing up ~/.tmux to ~/.tmux.backup"
+  mv "$HOME/.tmux" "$HOME/.tmux.backup"
+fi
+
+# Extract tmux.tar into $HOME (creates ~/.tmux)
+echo "📦 Extracting tmux.tar"
+tar -xf "$HOME/dotfiles/tmux/tmux.tar" -C "$HOME"
 
 # Copy tmux session files (if used manually)
 echo "📁 Copying tmux session files"
