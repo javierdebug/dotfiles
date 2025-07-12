@@ -41,3 +41,13 @@ if [ -f "$HOME/.bashrc" ]; then
   mv "$HOME/.bashrc" "$HOME/.bashrc.bak"
 fi
 ln -sf "$HOME/dotfiles/bash/.bashrc" "$HOME/.bashrc"
+
+# Setup FZF config:
+echo "🔧 Setting up FZF config"
+if [ -f "$HOME/.fzf.bash" ]; then
+  echo "🛑 Backing up existing ~/.fzf.bash to ~/.fzf.bash.backup"
+  mv "$HOME/.fzf.bash" "$HOME/.fzf.bash.backup"
+fi
+
+cp "$HOME/dotfiles/fzf/.fzf.bash" "$HOME/.fzf.bash"
+
