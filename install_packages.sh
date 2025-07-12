@@ -56,6 +56,7 @@ if [ -f "$HOME/.fzf.bash" ]; then
   echo "🛑 Backing up existing ~/.fzf.bash to ~/.fzf.bash.backup"
   mv "$HOME/.fzf.bash" "$HOME/.fzf.bash.backup"
 fi
+cp "$HOME/dotfiles/fzf/.fzf.bash" "$HOME/.fzf.bash"
 
 # Copy .fzf folder
 echo "📁 Copying .fzf folder to home directory"
