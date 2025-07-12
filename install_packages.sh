@@ -59,3 +59,18 @@ if [ -d "$HOME/.fzf" ]; then
 fi
 
 cp -r "$HOME/dotfiles/fzf/.fzf" "$HOME/.fzf"
+
+# Setup tmux config
+echo "🔧 Setting up tmux config"
+if [ -f "$HOME/.tmux.conf" ]; then
+  echo "🛑 Backing up existing ~/.tmux.conf to ~/.tmux.conf.backup"
+  mv "$HOME/.tmux.conf" "$HOME/.tmux.conf.backup"
+fi
+
+cp "$HOME/dotfiles/tmux/.tmux.conf" "$HOME/.tmux.conf"
+
+# Copy tmux session files (if used manually)
+echo "📁 Copying tmux session files"
+mkdir -p "$HOME/.tmux/sessions"
+cp -r "$HOME/dotfiles/tmux/sessions/"* "$HOME/.tmux/sessions/" 2>/dev/null || true
+
