@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SESSIONNAME="portfolioWeb"  # Specify a name for the session
+WORKDIR="$HOME/Documents/JV/Code/Dev/202X/portfolioJV/"  # Change this to the specific project folder
+
+# Start a new tmux session in detached mode
+tmux new-session -s $SESSIONNAME -n server -d -c "$WORKDIR"
+# Window 1: Server
+tmux send-keys -t $SESSIONNAME "npm run dev" C-m
+
+# Window 2: Git
+tmux new-window -t $SESSIONNAME -n Git -c "$WORKDIR"
+tmux send-keys -t $SESSIONNAME:2 "git status" C-m
+
+# Window 3: Miscellaneous
+tmux new-window -t $SESSIONNAME -n misc -c "$WORKDIR"
+
+# Set default window (e.g., editor)
+tmux select-window -t $SESSIONNAME:1

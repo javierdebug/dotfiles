@@ -1,0 +1,30 @@
+#!/bin/bash
+
+SESSIONNAME="Axon"
+WORKDIR="$HOME/Documents/JV/Code/WonderCraft/Projects/Axon/green-field/axon-marketing-wondercraft-green-field/"  # Change this to your project folder
+
+# Start a new tmux session in detached mode
+tmux new-session -s $SESSIONNAME -n server -d -c "$WORKDIR"
+# Window 1: Server
+tmux send-keys -t $SESSIONNAME "npm run dev" C-m
+
+# Window 2: Fake SSL
+tmux new-window -t $SESSIONNAME -n SSL -c "$WORKDIR"
+tmux send-keys -t $SESSIONNAME:2 "local-ssl-proxy --source 3010 --target 3000" C-m
+
+# Window 3: Git
+tmux new-window -t $SESSIONNAME -n Git -c "$WORKDIR"
+tmux send-keys -t $SESSIONNAME:3 "git status" C-m
+#
+# Window 4: Storybook
+tmux new-window -t $SESSIONNAME -n Storybook -c "$WORKDIR"
+tmux send-keys -t $SESSIONNAME:4 "npm run storybook" C-m
+
+# Window 5: Miscellaneous
+tmux new-window -t $SESSIONNAME -n misc -c "$WORKDIR"
+
+# Window 6: Miscellaneous 2
+tmux new-window -t $SESSIONNAME -n misc -c "$WORKDIR"
+
+# Set default window (e.g., editor)
+tmux select-window -t $SESSIONNAME:1
