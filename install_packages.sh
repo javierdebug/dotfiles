@@ -69,6 +69,9 @@ if [ -d "$HOME/.fzf" ]; then
   echo "🛑 Backing up existing ~/.fzf to ~/.fzf.backup"
   mv "$HOME/.fzf" "$HOME/.fzf.backup"
 fi
+# Extract .fzf.tar to ~/.fzf
+echo "📦 Extracting .fzf.tar"
+tar -xf "$HOME/dotfiles/fzf/.fzf.tar" -C "$HOME"
 
 cp -r "$HOME/dotfiles/fzf/.fzf" "$HOME/.fzf"
 
