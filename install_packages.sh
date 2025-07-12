@@ -51,3 +51,11 @@ fi
 
 cp "$HOME/dotfiles/fzf/.fzf.bash" "$HOME/.fzf.bash"
 
+# Copy .fzf folder
+echo "📁 Copying .fzf folder to home directory"
+if [ -d "$HOME/.fzf" ]; then
+  echo "🛑 Backing up existing ~/.fzf to ~/.fzf.backup"
+  mv "$HOME/.fzf" "$HOME/.fzf.backup"
+fi
+
+cp -r "$HOME/dotfiles/fzf/.fzf" "$HOME/.fzf"
