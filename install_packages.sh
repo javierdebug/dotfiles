@@ -36,14 +36,22 @@ echo "🎉 Done! Launch Neovim to finish plugin setup: nvim"
 
 #Link .bashrc from dotfiles
 echo "🔗 Linking custom .bashrc"
+if [ -f "$HOME/.bashrc.backup" ]; then
+  echo "⚠️  Removing previous ~/.bashrc.backup"
+  rm -f "$HOME/.bashrc.backup"
+fi
 if [ -f "$HOME/.bashrc" ]; then
   echo "Backing up existing ~/.bashrc to ~/.bashrc.bak"
   mv "$HOME/.bashrc" "$HOME/.bashrc.bak"
 fi
-ln -sf "$HOME/dotfiles/bash/.bashrc" "$HOME/.bashrc"
+cp "$HOME/dotfiles/bash/.bashrc" "$HOME/.bashrc"
 
 # Setup FZF config:
 echo "🔧 Setting up FZF config"
+if [ -f "$HOME/.fzf.bash.backup" ]; then
+  echo "⚠️  Removing previous ~/.fzf.bash.backup"
+  rm -f "$HOME/.fzf.bash.backup"
+fi
 if [ -f "$HOME/.fzf.bash" ]; then
   echo "🛑 Backing up existing ~/.fzf.bash to ~/.fzf.bash.backup"
   mv "$HOME/.fzf.bash" "$HOME/.fzf.bash.backup"
@@ -53,6 +61,10 @@ cp "$HOME/dotfiles/fzf/.fzf.bash" "$HOME/.fzf.bash"
 
 # Copy .fzf folder
 echo "📁 Copying .fzf folder to home directory"
+if [ -d "$HOME/.fzf.backup" ]; then
+  echo "⚠️  Removing previous ~/.fzf.backup"
+  rm -rf "$HOME/.fzf.backup"
+fi
 if [ -d "$HOME/.fzf" ]; then
   echo "🛑 Backing up existing ~/.fzf to ~/.fzf.backup"
   mv "$HOME/.fzf" "$HOME/.fzf.backup"
@@ -62,6 +74,10 @@ cp -r "$HOME/dotfiles/fzf/.fzf" "$HOME/.fzf"
 
 # Setup tmux config
 echo "🔧 Setting up tmux config"
+if [ -f "$HOME/.tmux.conf.backup" ]; then
+  echo "⚠️  Removing previous ~/.tmux.conf.backup"
+  rm -f "$HOME/.tmux.conf.backup"
+fi
 if [ -f "$HOME/.tmux.conf" ]; then
   echo "🛑 Backing up existing ~/.tmux.conf to ~/.tmux.conf.backup"
   mv "$HOME/.tmux.conf" "$HOME/.tmux.conf.backup"
@@ -76,7 +92,10 @@ cp -r "$HOME/dotfiles/tmux/.tmux-sessions/"* "$HOME/.tmux-sessions" 2>/dev/null 
 
 # Copy tmux selector helper script
 echo "📁 Copying tmux_selector.sh to home directory"
+if [ -f "$HOME/tmux_selector.sh.backup" ]; then
+  echo "⚠️  Removing previous ~/tmux_selector.sh.backup"
+  rm -f "$HOME/tmux_selector.sh.backup"
+fi
 cp "$HOME/dotfiles/tmux/tmux_selector.sh" "$HOME/tmux_selector.sh"
 chmod +x "$HOME/tmux_selector.sh"
-
 
