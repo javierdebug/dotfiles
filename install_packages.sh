@@ -71,8 +71,8 @@ cp "$HOME/dotfiles/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
 # Copy tmux session files (if used manually)
 echo "📁 Copying tmux session files"
-mkdir -p "$HOME/.tmux/sessions"
-cp -r "$HOME/dotfiles/tmux/sessions/"* "$HOME/.tmux/sessions/" 2>/dev/null || true
+mkdir -p "$HOME/.tmux-sessions"
+cp -r "$HOME/dotfiles/tmux/.tmux-sessions/"* "$HOME/.tmux-sessions" 2>/dev/null || true
 
 # Copy tmux selector helper script
 echo "📁 Copying tmux_selector.sh to home directory"
