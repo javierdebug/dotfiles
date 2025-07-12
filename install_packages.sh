@@ -71,8 +71,6 @@ fi
 echo "📦 Extracting .fzf.tar"
 tar -xf "$HOME/dotfiles/fzf/.fzf.tar" -C "$HOME"
 
-cp -r "$HOME/dotfiles/fzf/.fzf" "$HOME/.fzf"
-
 # Setup tmux config
 echo "🔧 Setting up tmux config"
 if [ -f "$HOME/.tmux.conf.backup" ]; then
