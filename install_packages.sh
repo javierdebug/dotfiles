@@ -9,6 +9,11 @@ PACKAGES=(
   fzf
   neovim
   tmux
+  nodejs
+  npm
+  bash-completion
+  copyq
+  flameshot
 )
 
 for pkg in "${PACKAGES[@]}"; do
@@ -19,6 +24,10 @@ for pkg in "${PACKAGES[@]}"; do
     echo "✅ $pkg already installed."
   fi
 done
+
+# Create custom folder structure for Projects:
+mkdir -p $HOME/Documents/JV/Code/WonderCraft/Projects/Axon/green-field
+mkdir -p $HOME/Documents/JV/Code/Dev/202X/
 
 # Setup Neovim config from your fork
 NVIM_CONFIG_DIR="$HOME/.config/nvim"
