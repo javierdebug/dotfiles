@@ -3,6 +3,10 @@
 set -e
 set -o pipefail
 
+echo "📦 Adding Neovim PPA to get the latest version..."
+sudo add-apt-repository -y ppa:neovim-ppa/unstable
+sudo apt-get update -y
+
 echo "📦 Installing packages: fzf, neovim, tmux, nodejs, npm, bash-completion, copyq, flameshot, git..."
 
 PACKAGES=(
@@ -15,6 +19,9 @@ PACKAGES=(
   copyq
   flameshot
   git
+  rofi
+  bspwm
+  sxhkd
 )
 
 install_with_apt() {
@@ -144,6 +151,47 @@ fi
 echo "📁 Copying tmux session files"
 mkdir -p "$HOME/.tmux-sessions"
 cp -r "$HOME/dotfiles/tmux/.tmux-sessions/"* "$HOME/.tmux-sessions" 2>/dev/null || true
+
+# ── NEW: bspwm & sxhkd config ────────────────────────────────────────────────
+echo "🧩 Setting up bspwm and sxhkd configs"
+
+# Create config dirs
+mkdir -p "$HOME/.config/bspwm"
+mkdir -p "$HOME/.config/sxhkd"
+
+# Backup existing configs if present
+if [ -d "$HOME/.config/bspwm" ] && [ -n "$(ls -A "$HOME/.config/bspwm")" ]; then
+  echo "🗃️  Backing up existing ~/.config/bspwm to ~/.config/bspwm.backup"
+  rm -rf "$HOME/.config/bspwm.backup" 2>/dev/null || true
+  mv "$HOME/.config/bspwm" "$HOME/.config/bspwm.backup"
+  mkdir -p "$HOME/.config/bspwm"
+fi
+
+if [ -d "$HOME/.config/sxhkd" ] && [ -n "$(ls -A "$HOME/.config/sxhkd")" ]; then
+  echo "🗃️  Backing up existing ~/.config/sxhkd to ~/.config/sxhkd.backup"
+  rm -rf "$HOME/.config/sxhkd.backup" 2>/dev/null || true
+  mv "$HOME/.config/sxhkd" "$HOME/.config/sxhkd.backup"
+  mkdir -p "$HOME/.config/sxhkd"
+fi
+
+# Copy from dotfiles (include hidden files)
+if [ -d "$HOME/dotfiles/bspwm" ]; then
+  echo "📁 Copying bspwm config from ~/dotfiles/bspwm → ~/.config/bspwm"
+  cp -a "$HOME/dotfiles/bspwm/." "$HOME/.config/bspwm"
+  # Ensure bspwmrc is executable
+  if [ -f "$HOME/.config/bspwm/bspwmrc" ]; then
+    chmod +x "$HOME/.config/bspwm/bspwmrc"
+  fi
+else
+  echo "⚠️  Skipped: ~/dotfiles/bspwm not found."
+fi
+
+if [ -d "$HOME/dotfiles/sxhkd" ]; then
+  echo "📁 Copying sxhkd config from ~/dotfiles/sxhkd → ~/.config/sxhkd"
+  cp -a "$HOME/dotfiles/sxhkd/." "$HOME/.config/sxhkd"
+else
+  echo "⚠️  Skipped: ~/dotfiles/sxhkd not found."
+fi
 
 # Copy tmux selector helper script
 echo "📁 Copying tmux_selector.sh to home directory"
