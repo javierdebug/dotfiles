@@ -164,6 +164,12 @@ mkdir -p "$HOME/.config/bspwm"
 mkdir -p "$HOME/.config/sxhkd"
 mkdir -p "$HOME/rofi"
 
+# Remove old backup of bspwm config if it exists
+if [ -d "$HOME/.config/bspwm.backup" ]; then
+  echo "⚠️  Removing old backup at ~/.config/bspwm.backup"
+  rm -rf "$HOME/.config/bspwm.backup"
+fi
+
 # Backup existing configs if present
 if [ -d "$HOME/.config/bspwm" ]; then
   echo "🗃️  Backing up existing ~/.config/bspwm to ~/.config/bspwm.backup"
@@ -179,6 +185,13 @@ else
   echo "⚠️  Skipped: ~/dotfiles/bspwm not found."
 fi
 
+# Remove old backup of sxhkd config if it exists
+if [ -d "$HOME/.config/sxhkd.backup" ]; then
+  echo "⚠️  Removing old backup at ~/.config/sxhkd.backup"
+  rm -rf "$HOME/.config/sxhkd.backup"
+fi
+
+# Backup existing configs if present
 if [ -d "$HOME/.config/sxhkd" ]; then
   echo "🗃️  Backing up existing ~/.config/sxhkd to ~/.config/sxhkd.backup"
   mv "$HOME/.config/sxhkd" "$HOME/.config/sxhkd.backup"
