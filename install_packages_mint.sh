@@ -162,6 +162,7 @@ echo "🧩 Setting up bspwm and sxhkd configs"
 # Create config dirs
 mkdir -p "$HOME/.config/bspwm"
 mkdir -p "$HOME/.config/sxhkd"
+mkdir -p "$HOME/rofi"
 
 # Backup existing configs if present
 if [ -d "$HOME/.config/bspwm" ]; then
