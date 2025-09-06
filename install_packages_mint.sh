@@ -168,7 +168,7 @@ if [ -d "$HOME/.config/bspwm" ]; then
 fi
 if [ -d "$HOME/dotfiles/bspwm" ]; then
   echo "📁 Copying bspwm config from ~/dotfiles/bspwm → ~/.config/bspwm"
-  cp "$HOME/dotfiles/bspwm/." "$HOME/.config/bspwm"
+  cp -a "$HOME/dotfiles/bspwm/." "$HOME/.config/bspwm"
   if [ -f "$HOME/.config/bspwm/bspwmrc" ]; then
     chmod +x "$HOME/.config/bspwm/bspwmrc"
   fi
@@ -182,7 +182,7 @@ if [ -d "$HOME/.config/sxhkd" ]; then
 fi
 if [ -d "$HOME/dotfiles/sxhkd" ]; then
   echo "📁 Copying sxhkd config from ~/dotfiles/sxhkd → ~/.config/sxhkd"
-  cp "$HOME/dotfiles/sxhkd/." "$HOME/.config/sxhkd"
+  cp -a "$HOME/dotfiles/sxhkd/." "$HOME/.config/sxhkd"
 else
   echo "⚠️  Skipped: ~/dotfiles/sxhkd not found."
 fi
@@ -191,7 +191,7 @@ if [ -d "$HOME/.config/polybar" ]; then
   echo "🗃️  Backing up existing ~/.config/polybar to ~/.config/polybar.backup"
   mv "$HOME/.config/polybar" "$HOME/.config/polybar.backup"
 fi
-cp "$HOME/dotfiles/polybar/." "$HOME/.config/polybar"
+cp -a "$HOME/dotfiles/polybar/." "$HOME/.config/polybar"
 
 # Copy tmux selector helper script
 echo "📁 Copying tmux_selector.sh to home directory"
