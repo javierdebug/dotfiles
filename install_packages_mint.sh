@@ -203,6 +203,12 @@ else
   echo "⚠️  Skipped: ~/dotfiles/sxhkd not found."
 fi
 
+# Remove old backup of polybar config if it exists
+if [ -d "$HOME/.config/polybar.backup" ]; then
+  echo "⚠️  Removing old backup at ~/.config/polybar.backup"
+  rm -rf "$HOME/.config/polybar.backup"
+fi
+
 if [ -d "$HOME/.config/polybar" ]; then
   echo "🗃️  Backing up existing ~/.config/polybar to ~/.config/polybar.backup"
   mv "$HOME/.config/polybar" "$HOME/.config/polybar.backup"
