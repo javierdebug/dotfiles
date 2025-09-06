@@ -3,9 +3,11 @@
 set -e
 set -o pipefail
 
-echo "📦 Adding Neovim PPA to get the latest version..."
-sudo add-apt-repository -y ppa:neovim-ppa/unstable
-sudo apt-get update -y
+if ! grep -rq "neovim-ppa/unstable" /etc/apt/sources.list; then
+  echo "📦 Adding Neovim PPA to get the latest version..."
+  sudo add-apt-repository -y ppa:neovim-ppa/unstable
+  sudo apt-get update -y
+fi 
 
 echo "📦 Installing packages: fzf, neovim, tmux, nodejs, npm, bash-completion, copyq, flameshot, git..."
 
@@ -192,6 +194,16 @@ if [ -d "$HOME/.config/polybar" ]; then
   mv "$HOME/.config/polybar" "$HOME/.config/polybar.backup"
 fi
 cp -a "$HOME/dotfiles/polybar/." "$HOME/.config/polybar"
+
+# Copy rofi selector helper script
+echo "📁 Copying rofi web search script to rofi folder"
+if [ -f "$HOME/rofi_web_search.py.backup" ]; then
+  echo "⚠️  Removing previous ~/rofi_web_search.py.backup"
+  rm -f "$HOME/rofi_web_search.py.backup"
+fi
+  echo "📁 Copying rofi web search script to rofi folder"
+cp "$HOME/dotfiles/rofi/rofi-web-search.py" "$HOME/rofi_web_search.py"
+chmod +x "$HOME/rofi_web_search.py"
 
 # Copy tmux selector helper script
 echo "📁 Copying tmux_selector.sh to home directory"
