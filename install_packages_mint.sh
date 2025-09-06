@@ -198,13 +198,13 @@ cp -a "$HOME/dotfiles/polybar/." "$HOME/.config/polybar"
 
 # Copy rofi selector helper script
 echo "📁 Copying rofi web search script to rofi folder"
-if [ -f "$HOME/rofi_web_search.py.backup" ]; then
-  echo "⚠️  Removing previous ~/rofi_web_search.py.backup"
-  rm -f "$HOME/rofi_web_search.py.backup"
+if [ -f "$HOME/rofi/rofi_web_search.py.backup" ]; then
+  echo "⚠️  Removing previous ~/rofi/rofi_web_search.py.backup"
+  rm -f "$HOME/rofi/rofi_web_search.py.backup"
 fi
   echo "📁 Copying rofi web search script to rofi folder"
-cp "$HOME/dotfiles/rofi/rofi-web-search.py" "$HOME/rofi_web_search.py"
-chmod +x "$HOME/rofi_web_search.py"
+cp "$HOME/dotfiles/rofi/rofi-web-search.py" "$HOME/rofi/rofi_web_search.py"
+chmod +x "$HOME/rofi/rofi_web_search.py"
 
 # Copy tmux selector helper script
 echo "📁 Copying tmux_selector.sh to home directory"
