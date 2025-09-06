@@ -23,9 +23,12 @@ bspc rule -a Xzoom state=floating
 # feh --bg-fill -z $HOME/Documents/JV/Wallpapers/wallpapers/
 #Wallpaper specific wallpaper
 # feh --bg-fill $HOME/Documents/JV/Wallpapers/wallpapers/0203.jpg
-feh --bg-fill $HOME/Documents/JV/Wallpapers/wallpapers/0148.jpg
+# feh --bg-fill $HOME/Documents/JV/Wallpapers/wallpapers/0148.jpg
 # feh --bg-fill $HOME/Documents/JV/Wallpapers/wallpapers/0210.jpg
 # feh --bg-fill $HOME/Documents/JV/Wallpapers/wallpapers/0239.jpg
+# feh --bg-fill $HOME/Documents/JV/Wallpapers/wallpapers/0229.jpg
+feh --bg-fill $HOME/Documents/JV/Wallpapers/wallpapers/0232.jpg
+# feh --bg-fill $HOME/Documents/JV/Wallpapers/wallpapers/0233.jpg
 
 # polybar theme:
 $HOME/.config/polybar/blocks/launch.sh &

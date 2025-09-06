@@ -22,6 +22,8 @@ PACKAGES=(
   rofi
   bspwm
   sxhkd
+  polybar
+  feh
 )
 
 install_with_apt() {
@@ -160,25 +162,13 @@ mkdir -p "$HOME/.config/bspwm"
 mkdir -p "$HOME/.config/sxhkd"
 
 # Backup existing configs if present
-if [ -d "$HOME/.config/bspwm" ] && [ -n "$(ls -A "$HOME/.config/bspwm")" ]; then
+if [ -d "$HOME/.config/bspwm" ]; then
   echo "🗃️  Backing up existing ~/.config/bspwm to ~/.config/bspwm.backup"
-  rm -rf "$HOME/.config/bspwm.backup" 2>/dev/null || true
   mv "$HOME/.config/bspwm" "$HOME/.config/bspwm.backup"
-  mkdir -p "$HOME/.config/bspwm"
 fi
-
-if [ -d "$HOME/.config/sxhkd" ] && [ -n "$(ls -A "$HOME/.config/sxhkd")" ]; then
-  echo "🗃️  Backing up existing ~/.config/sxhkd to ~/.config/sxhkd.backup"
-  rm -rf "$HOME/.config/sxhkd.backup" 2>/dev/null || true
-  mv "$HOME/.config/sxhkd" "$HOME/.config/sxhkd.backup"
-  mkdir -p "$HOME/.config/sxhkd"
-fi
-
-# Copy from dotfiles (include hidden files)
 if [ -d "$HOME/dotfiles/bspwm" ]; then
   echo "📁 Copying bspwm config from ~/dotfiles/bspwm → ~/.config/bspwm"
-  cp -a "$HOME/dotfiles/bspwm/." "$HOME/.config/bspwm"
-  # Ensure bspwmrc is executable
+  cp "$HOME/dotfiles/bspwm/." "$HOME/.config/bspwm"
   if [ -f "$HOME/.config/bspwm/bspwmrc" ]; then
     chmod +x "$HOME/.config/bspwm/bspwmrc"
   fi
@@ -186,12 +176,22 @@ else
   echo "⚠️  Skipped: ~/dotfiles/bspwm not found."
 fi
 
+if [ -d "$HOME/.config/sxhkd" ]; then
+  echo "🗃️  Backing up existing ~/.config/sxhkd to ~/.config/sxhkd.backup"
+  mv "$HOME/.config/sxhkd" "$HOME/.config/sxhkd.backup"
+fi
 if [ -d "$HOME/dotfiles/sxhkd" ]; then
   echo "📁 Copying sxhkd config from ~/dotfiles/sxhkd → ~/.config/sxhkd"
-  cp -a "$HOME/dotfiles/sxhkd/." "$HOME/.config/sxhkd"
+  cp "$HOME/dotfiles/sxhkd/." "$HOME/.config/sxhkd"
 else
   echo "⚠️  Skipped: ~/dotfiles/sxhkd not found."
 fi
+
+if [ -d "$HOME/.config/polybar" ]; then
+  echo "🗃️  Backing up existing ~/.config/polybar to ~/.config/polybar.backup"
+  mv "$HOME/.config/polybar" "$HOME/.config/polybar.backup"
+fi
+cp "$HOME/dotfiles/polybar/." "$HOME/.config/polybar"
 
 # Copy tmux selector helper script
 echo "📁 Copying tmux_selector.sh to home directory"
