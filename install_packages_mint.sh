@@ -26,6 +26,8 @@ PACKAGES=(
   sxhkd
   polybar
   feh
+  xautolock
+  i3lock
 )
 
 install_with_apt() {
@@ -250,6 +252,11 @@ fi else
   echo "🎨 Creating ~/.config/gtk-3.0/settings.ini file" 
   cp -a "$HOME/dotfiles/gtk-3.0/." "$HOME/.config/gtk-3.0"
 fi
+
+# Clone wallpapers repo
+mkdir -p "$HOME/Documents/JV/Wallpapers/"
+echo "📥 Cloning wallpapers repo"
+git clone https://gitlab.com/dwt1/wallpapers.git "$HOME/Documents/JV/Wallpapers/"
 
 echo "✅ Setup complete."
 
