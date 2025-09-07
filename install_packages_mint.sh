@@ -51,6 +51,10 @@ install_with_apt() {
   fi
 }
 
+# Istall Brave browser
+echo "📥 Installing Brave browser..."
+curl -fsS https://dl.brave.com/install.sh | sh
+
 # Detect package manager (Linux Mint uses apt)
 if command -v apt-get >/dev/null 2>&1; then
   install_with_apt
