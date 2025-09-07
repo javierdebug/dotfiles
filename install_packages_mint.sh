@@ -234,5 +234,22 @@ fi
 cp "$HOME/dotfiles/tmux/tmux_selector.sh" "$HOME/tmux_selector.sh"
 chmod +x "$HOME/tmux_selector.sh"
 
+# Update theme to Mint-Y-Dark-Aqua
+
+# Remove old backup of polybar config if it exists
+if [ -d "$HOME/.config/gtk-3.0/settings.ini.backup" ]; then
+  echo "⚠️  Removing old backup at ~/.config/gtk-3.0/settings.ini.backup"
+  rm -rf "$HOME/.config/gtk-3.0/settings.ini.backup"
+fi
+echo "🎨 Updating theme to Mint-Y-Dark-Aqua"
+if [ -d "$HOME/.config/gtk-3.0" ]; then
+  echo "🗃️  Backing up existing ~/.config/gtk-3.0/settings.ini to ~/.config/gtk-3.0/settings.ini.backup"
+  mv "$HOME/.config/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini.backup"
+fi else
+  echo "⚠️  Skipped: ~/.config/gtk-3.0/settings.ini not found."
+  echo "🎨 Creating ~/.config/gtk-3.0/settings.ini file" 
+  cp -a "$HOME/dotfiles/gtk-3.0/." "$HOME/.config/gtk-3.0"
+fi
+
 echo "✅ Setup complete."
 
