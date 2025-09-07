@@ -53,7 +53,10 @@ install_with_apt() {
 
 # Istall Brave browser
 echo "📥 Installing Brave browser..."
-curl -fsS https://dl.brave.com/install.sh | sh
+# check if brave is already installed
+if ! command -v brave >/dev/null 2>&1; then
+  curl -fsS https://dl.brave.com/install.sh | sh
+fi
 
 # Detect package manager (Linux Mint uses apt)
 if command -v apt-get >/dev/null 2>&1; then
@@ -251,7 +254,7 @@ echo "🎨 Updating theme to Mint-Y-Dark-Aqua"
 if [ -d "$HOME/.config/gtk-3.0" ]; then
   echo "🗃️  Backing up existing ~/.config/gtk-3.0/settings.ini to ~/.config/gtk-3.0/settings.ini.backup"
   mv "$HOME/.config/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini.backup"
-fi else
+else
   echo "⚠️  Skipped: ~/.config/gtk-3.0/settings.ini not found."
   echo "🎨 Creating ~/.config/gtk-3.0/settings.ini file" 
   cp -a "$HOME/dotfiles/gtk-3.0/." "$HOME/.config/gtk-3.0"
