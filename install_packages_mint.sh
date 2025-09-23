@@ -25,6 +25,7 @@ PACKAGES=(
   bspwm
   sxhkd
   polybar
+  xclip
   feh
   xautolock
   i3lock
@@ -254,11 +255,8 @@ echo "🎨 Updating theme to Mint-Y-Dark-Aqua"
 if [ -d "$HOME/.config/gtk-3.0" ]; then
   echo "🗃️  Backing up existing ~/.config/gtk-3.0/settings.ini to ~/.config/gtk-3.0/settings.ini.backup"
   mv "$HOME/.config/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini.backup"
-else
-  echo "⚠️  Skipped: ~/.config/gtk-3.0/settings.ini not found."
-  echo "🎨 Creating ~/.config/gtk-3.0/settings.ini file" 
-  cp -a "$HOME/dotfiles/gtk-3.0/." "$HOME/.config/gtk-3.0"
 fi
+cp -a "$HOME/dotfiles/gtk-3.0/." "$HOME/.config/gtk-3.0"
 
 # Clone wallpapers repo
 mkdir -p "$HOME/Documents/JV/Wallpapers/"
