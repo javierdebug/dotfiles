@@ -85,8 +85,8 @@ super + f
 # 	bspc node -t floating
 
 # set the node flags
-# super + ctrl + {m,x,y,z}
-# 	bspc node -g {marked,locked,sticky,private}
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
 
 #
 # focus/swap
@@ -144,13 +144,17 @@ super + ctrl + space
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
+# Send to preselection
+super + ctrl + shift + t
+	bspc node newest.marked.local -n newest.!automatic.local
+
 #
 # move/resize
 #
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 -1}
 
 # contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
