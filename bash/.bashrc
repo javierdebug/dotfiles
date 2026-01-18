@@ -2,10 +2,10 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 # SCRIPTS configuration:
-PATH="$PATH":"$HOME/.local/scripts/"
+# PATH="$PATH":"$HOME/.local/scripts/"
 
 # bindkey -s ^f "tmux-sessionizer\n"
-bind "^f":"tmux-sessionizer\n"
+# bind "C-f":"$HOME/.local/scripts/tmux-sessionizer"
 # bind -x '".pgc":"gnome-terminal"' 
 # "rofi -show window" &"'
 
@@ -123,7 +123,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
 
@@ -189,5 +188,41 @@ fi
 unset color_prompt force_color_prompt
 
 
+# # Added by LM Studio CLI (lms)
+# export PATH="$PATH:/home/javierd/.cache/lm-studio/bin"
+# PATH="$HOME/.local/bin:$PATH"
 
+# export PATH=/home/javierd/qmk_toolchains_linuxX64:$PATH
+# export PATH=~/bin:$PATH
+
+# # opencode
+# export PATH=/home/javierd/.opencode/bin:$PATH
+
+# --- PATH setup (deduped, ordered) -----------------------------------------
+path_prepend () {
+  case ":$PATH:" in
+    *":$1:"*) ;;           # already there, do nothing
+    *) PATH="$1:$PATH" ;;
+  esac
+}
+
+path_append () {
+  case ":$PATH:" in
+    *":$1:"*) ;;           # already there, do nothing
+    *) PATH="$PATH:$1" ;;
+  esac
+}
+
+# Prefer your user bins first
+path_prepend "$HOME/.local/bin"
+path_prepend "$HOME/bin"
+
+# Tooling
+path_append "$HOME/.opencode/bin"
+# path_prepend "$HOME/qmk_toolchains_linuxX64"
+path_append  "$HOME/.local/scripts"
+# path_append  "$HOME/.cache/lm-studio/bin"
+
+export PATH
+# --------------------------------------------------------------------------
 
