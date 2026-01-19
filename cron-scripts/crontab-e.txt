@@ -1,0 +1,17 @@
+# Crontab for Javier
+# in a Termina, run: crontab -e and paste the following lines:
+
+
+LOWER='redshift -l 8.76:-75.84 -t 6000:3100 -b 1:0.8'
+HIGH='redshift -O 6000 -b 1.0'
+RESET='redshift -x'
+DISPLAY=:0.0
+
+59 23 1 * * /home/javierd/cron-scripts/backup-usb-to-HDD.sh
+52 23 * * * /home/javierd/cron-scripts/backup-sdd-wc-axon.sh && /home/javierd/cron-scripts/sync-axon-to-storagebox.sh
+
+#@reboot /home/javierd/cron-scripts/redshift.sh
+#41 22 * * * /home/javierd/cron-scripts/redshift2.sh
+#0 14 * * * /home/javierd/cron-scripts/redshift.sh
+59 18 * * * $RESET
+0 19 * * * $LOWER
