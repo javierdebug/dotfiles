@@ -31,11 +31,11 @@ fi
 SESSION_NAME="${sessions[$choice]}"
 SESSION_SCRIPT="$SESSION_SCRIPTS_DIR/tmux-session-$SESSION_NAME"
 
-tmux has-session -t "$SESSION_NAME" &> /dev/null
+tmux has-session -t "=$SESSION_NAME" &> /dev/null
 
 if [ $? != 0 ]; then
     bash "$SESSION_SCRIPT"
 fi
 
-tmux attach -t "$SESSION_NAME"
+tmux attach -t "=$SESSION_NAME"
 
