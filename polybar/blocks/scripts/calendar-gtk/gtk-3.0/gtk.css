@@ -1,0 +1,62 @@
+/*
+ * Styling for the yad calendar popped up by scripts/popup-calendar.sh.
+ *
+ * popup-calendar.sh points XDG_CONFIG_HOME at the parent directory, so this
+ * file is picked up by that one window only and the desktop GTK theme is left
+ * alone. Colours mirror blocks/colors.ini.
+ */
+
+window,
+window.background,
+.background {
+  background-color: #11151f;
+  color: #ffffff;
+  border: 1px solid #1b2130;
+}
+
+calendar {
+  background-color: #11151f;
+  color: #ffffff;
+  border: none;
+  padding: 4px;
+  font-size: 11px;
+}
+
+/* Month / year header row */
+calendar.header {
+  background-color: #11151f;
+  color: #4dd0e1;
+  border-bottom: 1px solid #1b2130;
+  font-weight: bold;
+}
+
+/* The < > month arrows */
+calendar.button {
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  color: #9e9e9e;
+}
+
+calendar.button:hover {
+  color: #ffffff;
+}
+
+/* Weekday and week-number labels */
+calendar.highlight {
+  color: #6d8895;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* Days belonging to the previous / next month */
+calendar:indeterminate {
+  color: #3a4250;
+}
+
+calendar:selected {
+  background-color: #4dd0e1;
+  color: #11151f;
+  border-radius: 3px;
+}
