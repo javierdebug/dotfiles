@@ -29,6 +29,17 @@ PACKAGES=(
   feh
   xautolock
   i3lock
+  yad
+  xdotool
+  x11-apps
+  python3
+  blueman
+  bluez
+  network-manager
+  network-manager-gnome
+  alacritty
+  htop
+  fonts-lato
 )
 
 install_with_apt() {
@@ -224,6 +235,18 @@ if [ -d "$HOME/.config/polybar" ]; then
   mv "$HOME/.config/polybar" "$HOME/.config/polybar.backup"
 fi
 cp -a "$HOME/dotfiles/polybar/." "$HOME/.config/polybar"
+
+# Install the fonts the polybar bar depends on. icomoon-feather carries every
+# icon on the bar and iosevka_nerd_font the volume and workspace glyphs; neither
+# is packaged for apt, so both ship in the repo.
+echo "🔤 Installing polybar fonts to ~/.local/share/fonts"
+if [ -d "$HOME/dotfiles/fonts" ]; then
+  mkdir -p "$HOME/.local/share/fonts"
+  cp -a "$HOME/dotfiles/fonts/." "$HOME/.local/share/fonts"
+  fc-cache -f "$HOME/.local/share/fonts" >/dev/null
+else
+  echo "⚠️  Skipped: ~/dotfiles/fonts not found."
+fi
 
 # Copy rofi selector helper script
 echo "📁 Copying rofi web search script to rofi folder"
