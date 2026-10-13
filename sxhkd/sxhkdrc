@@ -8,7 +8,8 @@ super + Return
 
 # program launcher
 super + r
-	rofi -show combi -modi combi -combi-modi "search:~/rofi/rofi-web-search.py,drun" -show-icons
+	rofi -show combi -combi-modi "search:~/rofi/rofi-simple-search.sh,drun" -show-icons -sort -no-disable-history
+	# rofi -show combi -modi combi -combi-modi "search:~/rofi/rofi-web-search.py,drun" -show-icons -sort
 
 super + shift + r
 	rofi -show run
@@ -73,7 +74,7 @@ super + shift + c
 # 	bspc node -t {tiles,pseudo_tiled,floating,fullscreen}
 
 # toggle tiled/fullscreen state of window
-super + f
+super + shift + f
 	bspc node -t {tiled,fullscreen}
 
 # # set window as floaitng:
@@ -117,8 +118,13 @@ super + {_,shift + }{h,j,k,l}
 # focus or send to the given desktop
 # super + {_,shift + }{1-9,0}
 	# bspc {desktop -f,node -d} '^{1-9,10}'
-super + {_,shift + }{a,o,e,u,i,p,period,comma,quote,k,j}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+# focus the given desktop
+super + {a,o,e,u,i,y,p,period,comma,apostrophe,d,t}
+	bspc desktop -f '^{1-9,10,11,12}'
+
+# send focused window to the given desktop
+super + shift + {a,o,e,u,i,y,p,period,comma,apostrophe,d,t}
+	bspc node -d '^{1-9,10,11,12}'
 
 #
 # preselect

@@ -23,8 +23,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=20000
-HISTFILESIZE=30000
+HISTSIZE=50000
+HISTFILESIZE=60000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -186,6 +186,7 @@ else
 PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
 fi
 unset color_prompt force_color_prompt
+
 
 
 # # Added by LM Studio CLI (lms)

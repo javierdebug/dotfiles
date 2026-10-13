@@ -6,7 +6,7 @@ Keyboard
 
 Tmux
 
-Vim setting/features
+Neovim: kept in its own repo, https://github.com/javierdebug/kickstart.nvim
 
 VSCode
 
